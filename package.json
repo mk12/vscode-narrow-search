@@ -1,0 +1,54 @@
+{
+    "name": "narrow-search",
+    "version": "0.0.1",
+    "displayName": "Narrow Search",
+    "description": "Provides a command to narrow searches to the current directory",
+    "publisher": "Mitchell Kember",
+    "license": "MIT",
+    "homepage": "https://github.com/mk12/vscode-narrow-search",
+    "repository": {
+		"type": "git",
+		"url": "https://github.com/mk12/vscode-narrow-search.git"
+	},
+    "extensionKind": [
+        "workspace"
+    ],
+    "engines": {
+        "vscode": "^1.72.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/extension.js",
+    "activationEvents": [],
+    "contributes": {
+        "commands": [
+            {
+                "command": "narrow-search.narrowSearchToCurrentDirectory",
+                "title": "Narrow Search: Current Directory"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/node": "16.x",
+        "@types/vscode": "^1.72.0",
+        "@typescript-eslint/eslint-plugin": "^5.38.1",
+        "@typescript-eslint/parser": "^5.38.1",
+        "@vscode/test-electron": "^2.1.5",
+        "eslint": "^8.24.0",
+        "eslint-config-prettier": "^8.6.0",
+        "prettier": "^2.8.3",
+        "typescript": "^4.8.4"
+    },
+    "prettier": {
+        "trailingComma": "all"
+    }
+}
