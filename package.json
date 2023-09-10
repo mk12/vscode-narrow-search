@@ -38,12 +38,11 @@
             "title": "Narrow Search",
             "properties": {
                 "narrow-search.presets": {
-                    "type": "object",
+                    "type": "array",
                     "description": "Each preset has a key and a value. The key is the preset's name. The value gets put in the Search view's \"files to include\" field when you select the preset.",
-                    "patternProperties": {
-                        ".*": {
-                            "type": "string"
-                        }
+                    "items": {
+                        "type": "string",
+                        "description": "Foobar"
                     }
                 }
             }

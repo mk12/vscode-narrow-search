@@ -30,22 +30,17 @@ function cmdNarrowSearchToCurrentDirectory(
 }
 
 async function cmdNarrowSearchChoosePreset() {
-  const presets = Object.entries(getConfig().get("presets") as object);
+  const presets = getConfig().get("presets") as string[];
   if (presets.length === 0) {
     vscode.window.showErrorMessage(
-      "There are no presets. Add some to your settings with the key \"narrow-search.presets\".");
+      "There are no presets. Configure some with \"narrow-search.presets\".");
     return;
   }
-  const quickPick = vscode.window.createQuickPick();
-  quickPick.placeholder = "Choose a preset to narrow the search";
-  quickPick.items = presets.map(([key, value]) => ({ label: key, description: value }));
-  quickPick.show();
-  quickPick.onDidAccept(() => {
-    const value = quickPick.activeItems[0].description;
-    if (value === undefined) throw Error("active item is missing description");
-    quickPick.dispose();
-    narrowSearch(value);
+  const selection = await vscode.window.showQuickPick(presets, {
+    placeHolder: "Choose a preset to narrow the search"
   });
+  if (selection === undefined) return;
+  return narrowSearch(selection);
 }
 
 function getConfig() {
