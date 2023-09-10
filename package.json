@@ -2,7 +2,7 @@
     "name": "narrow-search",
     "version": "0.1.0",
     "displayName": "Narrow Search",
-    "description": "Provides a command to narrow searches to specific directories",
+    "description": "Provides a command to narrow searches",
     "publisher": "Mitchell Kember",
     "license": "MIT",
     "homepage": "https://github.com/mk12/vscode-narrow-search",

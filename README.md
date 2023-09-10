@@ -1,6 +1,8 @@
 # VS Code Narrow Search
 
-A simple VS Code extension that narrow searches to specific directories.
+A simple VS Code extension that narrow searches.
+
+This extension may be useful if you often find yourself editing the "files to include" field in the Search view.
 
 ## Install
 
@@ -12,10 +14,8 @@ code --install-extension *.vsix
 
 ## Commands
 
-| Command                          | Description                             |
-| -------------------------------- | --------------------------------------- |
-| Narrow Search: Current Directory | Narrows to the current file's directory |
-| Narrow Search: Choose Preset     | Narrows to a preset filter              |
+- **Narrow Search: Current Directory**: Narrows to the current file's directory
+- **Narrow Search: Choose Preset**: Narrows to a preset filter
 
 Narrowing the search directory also clears the search field. The VS Code Extension API does not provide a way out of this. However, you can easily retrieve the previous search by pressing the up arrow key.
 
