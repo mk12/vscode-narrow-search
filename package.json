@@ -2,16 +2,17 @@
     "name": "narrow-search",
     "version": "0.0.1",
     "displayName": "Narrow Search",
-    "description": "Provides a command to narrow searches to the current directory",
+    "description": "Provides a command to narrow searches to specific directories",
     "publisher": "Mitchell Kember",
     "license": "MIT",
     "homepage": "https://github.com/mk12/vscode-narrow-search",
     "repository": {
-		"type": "git",
-		"url": "https://github.com/mk12/vscode-narrow-search.git"
-	},
+        "type": "git",
+        "url": "https://github.com/mk12/vscode-narrow-search.git"
+    },
     "extensionKind": [
-        "ui", "workspace"
+        "ui",
+        "workspace"
     ],
     "engines": {
         "vscode": "^1.72.0"
@@ -26,8 +27,27 @@
             {
                 "command": "narrow-search.narrowSearchToCurrentDirectory",
                 "title": "Narrow Search: Current Directory"
+            },
+            {
+                "command": "narrow-search.narrowSearchChoosePreset",
+                "title": "Narrow Search: Choose Preset"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Narrow Search",
+            "properties": {
+                "narrow-search.presets": {
+                    "type": "object",
+                    "description": "Each preset has a key and a value. The key is the preset's name. The value gets put in the Search view's \"files to include\" field when you select the preset.",
+                    "patternProperties": {
+                        ".*": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
