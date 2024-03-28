@@ -1,4 +1,4 @@
-# VS Code Narrow Search
+# VS Code: Narrow Search
 
 A simple VS Code extension that narrow searches.
 
@@ -6,22 +6,18 @@ This extension may be useful if you often find yourself editing the "files to in
 
 ## Install
 
-```sh
-npm install -g vsce
-vsce package
-code --install-extension *.vsix
-```
+Get [Narrow Search](https://marketplace.visualstudio.com/items?itemName=mk12.narrow-search) on the Visual Studio Marketplace.
 
 ## Commands
 
 - **Narrow Search: Current Directory**: Narrows to the current file's directory
 - **Narrow Search: Choose Preset**: Narrows to a preset filter
 
-Narrowing the search directory also clears the search field. The VS Code Extension API does not provide a way out of this. However, you can easily retrieve the previous search by pressing the up arrow key.
+Narrowing the search directory also clears the search field. The VS Code Extension API does not provide a way out of this. However, you can retrieve the previous search by pressing the up arrow key.
 
 ## Configuration
 
-Use `narrow-search.presets` to configure presets for the "Narrow Search: Choose Preset" command.
+Use `narrowSearch.presets` to configure presets for the "Narrow Search: Choose Preset" command.
 
 ## License
 

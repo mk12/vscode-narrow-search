@@ -3,13 +3,14 @@
     "version": "0.2.0",
     "displayName": "Narrow Search",
     "description": "Provides a command to narrow searches",
-    "publisher": "Mitchell Kember",
+    "publisher": "mk12",
     "license": "MIT",
     "homepage": "https://github.com/mk12/vscode-narrow-search",
     "repository": {
         "type": "git",
         "url": "https://github.com/mk12/vscode-narrow-search.git"
     },
+    "icon": "icon.png",
     "extensionKind": [
         "ui",
         "workspace"
@@ -25,19 +26,18 @@
     "contributes": {
         "commands": [
             {
-                "command": "narrow-search.narrowSearchToCurrentDirectory",
+                "command": "narrowSearch.narrowSearchToCurrentDirectory",
                 "title": "Narrow Search: Current Directory"
             },
             {
-                "command": "narrow-search.narrowSearchChoosePreset",
+                "command": "narrowSearch.narrowSearchChoosePreset",
                 "title": "Narrow Search: Choose Preset"
             }
         ],
         "configuration": {
-            "type": "object",
             "title": "Narrow Search",
             "properties": {
-                "narrow-search.presets": {
+                "narrowSearch.presets": {
                     "type": "array",
                     "description": "Each preset has a key and a value. The key is the preset's name. The value gets put in the Search view's \"files to include\" field when you select the preset.",
                     "items": {
@@ -49,11 +49,12 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "lint": "eslint --fix src/**/*.ts",
-        "fmt": "prettier -w src/**/*.ts"
+        "vscode:prepublish": "npm run esbuild-base -- --minify",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+        "esbuild": "npm run esbuild-base -- --sourcemap",
+        "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+        "test-compile": "tsc -p ./",
+        "lint": "eslint --fix src/**/*.ts"
     },
     "devDependencies": {
         "@types/node": "16.x",
@@ -61,12 +62,8 @@
         "@typescript-eslint/eslint-plugin": "^5.38.1",
         "@typescript-eslint/parser": "^5.38.1",
         "@vscode/test-electron": "^2.1.5",
+        "esbuild": "^0.20.2",
         "eslint": "^8.24.0",
-        "eslint-config-prettier": "^8.6.0",
-        "prettier": "^2.8.3",
         "typescript": "^4.8.4"
-    },
-    "prettier": {
-        "trailingComma": "all"
     }
 }

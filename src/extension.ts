@@ -4,11 +4,11 @@ import * as path from "path";
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerTextEditorCommand(
-      "narrow-search.narrowSearchToCurrentDirectory",
+      "narrowSearch.narrowSearchToCurrentDirectory",
       cmdNarrowSearchToCurrentDirectory,
     ),
     vscode.commands.registerCommand(
-      "narrow-search.narrowSearchChoosePreset",
+      "narrowSearch.narrowSearchChoosePreset",
       cmdNarrowSearchChoosePreset,
     ),
   );
@@ -33,7 +33,7 @@ async function cmdNarrowSearchChoosePreset() {
   const presets = getConfig().get("presets") as string[];
   if (presets.length === 0) {
     vscode.window.showErrorMessage(
-      "There are no presets. Configure some with \"narrow-search.presets\".");
+      "There are no presets. Configure some with \"narrowSearch.presets\".");
     return;
   }
   const selection = await vscode.window.showQuickPick(presets, {
@@ -44,7 +44,7 @@ async function cmdNarrowSearchChoosePreset() {
 }
 
 function getConfig() {
-  return vscode.workspace.getConfiguration("narrow-search");
+  return vscode.workspace.getConfiguration("narrowSearch");
 }
 
 function getWorkspaceOfFile(filename: string): string {
