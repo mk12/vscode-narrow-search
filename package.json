@@ -39,10 +39,10 @@
             "properties": {
                 "narrowSearch.presets": {
                     "type": "array",
-                    "description": "Each preset has a key and a value. The key is the preset's name. The value gets put in the Search view's \"files to include\" field when you select the preset.",
+                    "description": "Presets to use in the Search view's \"files to include\" field. Each preset can have multiple file patterns separated by commas.",
                     "items": {
                         "type": "string",
-                        "description": "Foobar"
+                        "description": "e.g. *.ts, src/**/include"
                     }
                 }
             }
