@@ -1,6 +1,6 @@
 {
     "name": "narrow-search",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "displayName": "Narrow Search",
     "description": "Provides a command to narrow searches",
     "publisher": "mk12",
